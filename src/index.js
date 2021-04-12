@@ -19,6 +19,8 @@ Sentry.init({
   // of transactions for performance monitoring.
   // We recommend adjusting this value in production
   tracesSampleRate: 1.0,
+  environment: process.env.NODE_ENV,
+  release: "react-todomvc-sentry@" + process.env.REACT_APP_VERSION + '-' + process.env.REACT_APP_COMMIT_HASH,
 });
 
 const root = document.getElementById("root");

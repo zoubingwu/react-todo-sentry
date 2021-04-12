@@ -18,8 +18,8 @@ function FallbackComponent() {
 
 function App() {
   return (
-    <Sentry.ErrorBoundary fallback={FallbackComponent} showDialog>
-      <HashRouter>
+    <HashRouter>
+      <Sentry.ErrorBoundary fallback={FallbackComponent} showDialog>
         <React.Fragment>
           <div className="todoapp">
             <Route path="/:filter?" component={TodoList} />
@@ -27,8 +27,8 @@ function App() {
           <button onClick={throwSomething}>Break the world</button>;
         <Footer />
         </React.Fragment>
-      </HashRouter>
-    </Sentry.ErrorBoundary>
+      </Sentry.ErrorBoundary>
+    </HashRouter>
   );
 }
 

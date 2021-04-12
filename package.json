@@ -1,5 +1,5 @@
 {
-  "name": "hooks-todo",
+  "name": "react-todomvc-sentry",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -24,7 +24,7 @@
   "scripts": {
     "dev": "react-scripts start",
     "start": "serve -s build",
-    "build": "REACT_APP_COMMIT_HASH=$(git rev-parse --short HEAD) REACT_APP_VERSION=$npm_package_version react-scripts build",
+    "build": "REACT_APP_NAME=$npm_package_name REACT_APP_COMMIT_HASH=$(git rev-parse --short HEAD) REACT_APP_VERSION=$npm_package_version react-scripts build",
     "test": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",

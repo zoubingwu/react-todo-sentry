@@ -7,7 +7,7 @@ import useTodos from "../reducers/useTodos";
 import TodoItem from "./TodoItem";
 
 export default function TodoList() {
-  const filter = useParams();
+  const { filter } = useParams();
   const [todos, { addTodo, deleteTodo, setDone }] = useTodos();
 
   const left = useMemo(() => todos.reduce((p, c) => p + (c.done ? 0 : 1), 0), [

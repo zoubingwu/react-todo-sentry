@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo } from "react";
-import { NavLink } from "react-router-dom";
-import useRouter from "use-react-router";
+import { NavLink, useParams } from "react-router-dom";
 
 import useInput from "../hooks/useInput";
 import useOnEnter from "../hooks/useOnEnter";
@@ -8,8 +7,7 @@ import useTodos from "../reducers/useTodos";
 import TodoItem from "./TodoItem";
 
 export default function TodoList() {
-  const router = useRouter();
-
+  const filter = useParams();
   const [todos, { addTodo, deleteTodo, setDone }] = useTodos();
 
   const left = useMemo(() => todos.reduce((p, c) => p + (c.done ? 0 : 1), 0), [
@@ -17,13 +15,8 @@ export default function TodoList() {
   ]);
 
   const visibleTodos = useMemo(
-    () =>
-      router.match.params.filter
-        ? todos.filter(i =>
-            router.match.params.filter === "active" ? !i.done : i.done
-          )
-        : todos,
-    [todos, router.match.params.filter]
+    () => filter ? todos.filter(i => filter === 'active' ? !i.done : i.done) : todos,
+    [todos, filter]
   );
 
   const anyDone = useMemo(() => todos.some(i => i.done), [todos]);
